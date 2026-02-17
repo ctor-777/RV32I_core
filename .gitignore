@@ -1,7 +1,11 @@
 
 
 .DS_Store
-.o
+*.o
+
+*.vcd
+
+bin/*
 
 # riscv-tests/*
 # riscv-tests
