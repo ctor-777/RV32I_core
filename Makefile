@@ -8,7 +8,7 @@ GHDL = ghdl
 STD = 08
 GHDLFLAGS = --std=$(STD) --workdir=$(WRKDIR)
 
-VHDL_SRCS = $(wildcard $(SRCDIR)/*.vhd) $(wildcard $(SRCDIR)/*/*.vhd)
+VHDL_SRCS = $(SRCDIR)/types_pkg.vhd $(filter-out $(SRCDIR)/types_pkg.vhd,$(wildcard $(SRCDIR)/*.vhd)) $(wildcard $(SRCDIR)/*/*.vhd)
 VHDL_TB = $(wildcard $(TBDIR)/*.vhd)
 
 .PHONY: all analyze sim alu_tb exec_tb clean
@@ -26,7 +26,11 @@ exec_tb: analyze
 	$(GHDL) -e $(GHDLFLAGS) -o $(WRKDIR)/execution_stage_tb execution_stage_tb 
 	./$(WRKDIR)/execution_stage_tb --vcd=$(TBDIR)/execution_stage_tb.vcd --stop-time=200ns
 
-sim: alu_tb exec_tb
+RAM_tb: analyze
+	$(GHDL) -e $(GHDLFLAGS) -o $(WRKDIR)/DP_RAM_tb DP_RAM_tb 
+	./$(WRKDIR)/DP_RAM_tb --vcd=$(TBDIR)/DP_RAM_tb.vcd --stop-time=200ns
+
+sim: alu_tb exec_tb RAM_tb
 
 clean:
 	rm -rf $(WRKDIR)/*
