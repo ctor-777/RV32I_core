@@ -67,7 +67,7 @@ begin
         we_b <= '0';
         wait for 10 ns;
 
-        -- Read back via port A
+       -- Read back via port A
         addr_a <= std_logic_vector(to_unsigned(10*4, 32));
         wait for 10 ns;
         assert out_a = x"12345678" report "DP_RAM write/read mismatch at addr 10" severity error;
