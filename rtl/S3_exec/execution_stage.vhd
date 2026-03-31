@@ -6,9 +6,9 @@ use work.types_pkg.all;
 
 ENTITY execution_stage IS
 	Port( 
-		pipeline_in: in fd_to_ex_rec_t;
-		clk: in std_logic;
-		pipeline_out: out ex_to_mem_rec_t);
+			clk				: in std_logic;
+			pipeline_in		: in fd_to_ex_rec_t;
+			pipeline_out	: out ex_to_mem_rec_t);
 END ENTITY execution_stage;
 
 ARCHITECTURE behavioral OF execution_stage IS

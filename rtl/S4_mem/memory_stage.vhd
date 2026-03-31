@@ -6,17 +6,17 @@ use work.types_pkg.all;
 
 ENTITY memory_stage IS
 	PORT(
-		pipeline_in: in ex_to_mem_rec_t;
+		pipeline_in	: in ex_to_mem_rec_t;
 		pipeline_out: out mem_to_wb_rec_t;
 
 		-- RAM bus (port B)
-		addr_b: out data_word_t;
-		we_b: out std_logic;
-		out_b: out data_word_t;
-		in_b: in data_word_t;
+		addr_b		:out data_word_t;
+		we_b		: out std_logic;
+		out_b		: out data_word_t;
+		in_b		: in data_word_t;
 
 		-- clock
-		clk: in std_logic);
+		clk			: in std_logic);
 
 END ENTITY memory_stage;
 

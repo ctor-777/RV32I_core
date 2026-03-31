@@ -13,7 +13,7 @@ VHDL_TB = $(wildcard $(TBDIR)/*.vhd)
 
 .PHONY: all analyze sim alu_tb exec_tb clean
 
-all: sim
+all: analyze
 
 analyze:
 	$(GHDL) -a $(GHDLFLAGS) $(VHDL_SRCS) $(VHDL_TB)
